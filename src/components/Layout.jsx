@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import {
-  BookOpenText, Bot, Command, House, Menu, MessageCircleMore,
+  BookOpenText, Command, House, Menu, MessageCircleMore,
   Newspaper, Send, ShieldCheck, Trophy, X
 } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { avatarFromUser } from "../lib/utils";
+import corgiImmortalLogo from "../assets/corgi-immortal-logo.png";
 
 const nav = [
   ["/", "Trang Chủ", House],
@@ -28,7 +29,7 @@ export default function Layout({ children }) {
       </div>
       <header className="topbar">
         <Link className="brand" to="/" onClick={() => setOpen(false)}>
-          <span className="brand-mark"><Bot size={23}/></span>
+          <span className="brand-mark"><img src={corgiImmortalLogo} alt="Corgi Immortal" /></span>
           <span><strong>Corgi Immortal</strong><small>Official Community</small></span>
         </Link>
 
