@@ -139,3 +139,17 @@ Forum có nút xóa chủ đề dành cho Admin/Developer.
 ## Ghi chú bảo mật
 
 Database đã bật RLS. Người dùng thông thường không thể tự cấp `admin` hoặc `developer` qua website.
+
+## Visual refresh V2.1
+Giao diện được tinh chỉnh theo hướng official community/game website hiện đại với không khí tu tiên vừa phải: nền tiên cảnh trừu tượng, ngọc + vàng làm accent, layout sạch và responsive. Không sao chép asset hoặc chức năng từ website tham khảo.
+
+
+### Thiên Bảng – Cảnh Giới
+Leaderboard API có thể trả thêm trường `realm` (hoặc `canhGioi`, `realmName`) để website hiển thị Cảnh Giới của thành viên Discord.
+
+## V2.5 — Discord verification legal URLs
+After production deployment, the two public legal pages are:
+- `https://corgi-immortal.pages.dev/terms` — Terms of Service / Điều Khoản Dịch Vụ
+- `https://corgi-immortal.pages.dev/privacy` — Privacy Policy / Chính Sách Bảo Mật
+
+Both routes are public and do not require Discord login. Before submitting them in Discord Developer Portal, open both production URLs in a private/incognito tab and confirm they load successfully.
