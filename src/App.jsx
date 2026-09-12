@@ -12,6 +12,7 @@ import TopicDetail from "./pages/TopicDetail";
 import Contact from "./pages/Contact";
 import Admin from "./pages/Admin";
 import Legal from "./pages/Legal";
+import Leaderboard from "./pages/Leaderboard";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/gioi-thieu" element={<About/>}/>
           <Route path="/lenh" element={<Commands/>}/>
           <Route path="/tin-tuc" element={<News/>}/>
+          <Route path="/thien-bang" element={<Leaderboard/>}/>
           <Route path="/tin-tuc/:slug" element={<NewsDetail/>}/>
           <Route path="/dien-dan" element={<Forum/>}/>
           <Route path="/dien-dan/:id" element={<TopicDetail/>}/>
