@@ -153,3 +153,4 @@ After production deployment, the two public legal pages are:
 - `https://corgi-immortal.pages.dev/privacy` — Privacy Policy / Chính Sách Bảo Mật
 
 Both routes are public and do not require Discord login. Before submitting them in Discord Developer Portal, open both production URLs in a private/incognito tab and confirm they load successfully.
+.
