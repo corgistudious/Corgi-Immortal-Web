@@ -17,9 +17,9 @@ function Podium({ entry, place }) {
       <div className="podium-avatar"><Avatar entry={entry}/></div>
       <div className="podium-icon">{icons[place]}</div>
       <h3>{entry.displayName}</h3>
-      <p>Cấp {entry.level}</p>
+      <p>⚔️ {fmt.format(entry.power)} Chiến Lực</p>
       {entry.realm && <span className="realm-pill">{entry.realm}</span>}
-      <strong>{fmt.format(entry.totalXp)} XP</strong>
+      <strong>✨ {fmt.format(entry.totalCultivation)} Tu Vi</strong>
     </article>
   );
 }
@@ -51,7 +51,7 @@ export default function Leaderboard() {
       <div className="leaderboard-hero">
         <span className="eyebrow"><Sparkles size={16}/> THIÊN BẢNG DISCORD</span>
         <h1>Thiên Bảng</h1>
-        <p>Bảng xếp hạng thành viên Discord theo Cảnh Giới, cấp độ và kinh nghiệm. Dữ liệu được đồng bộ từ hệ thống tu luyện của bot.</p>
+        <p>Thiên Bảng chính thức của Corgi Immortal, xếp hạng đúng theo Tổng Tu Vi như lệnh /leaderboard trong Discord.</p>
         <button className="ghost-btn rank-refresh" onClick={load} disabled={loading}><RefreshCw size={16}/>{loading ? "Đang cập nhật" : "Cập nhật"}</button>
       </div>
 
@@ -59,7 +59,7 @@ export default function Leaderboard() {
         <div className="empty-card leaderboard-empty">
           <Trophy size={28}/>
           <h3>Thiên Bảng đã sẵn sàng</h3>
-          <p>Website chưa được kết nối với dữ liệu XP Discord. Thêm biến <code>VITE_LEADERBOARD_API_URL</code> trên Cloudflare để hiển thị dữ liệu thật.</p>
+          <p>Website chưa được kết nối với dữ liệu Thiên Bảng của bot. Thêm biến <code>VITE_LEADERBOARD_API_URL</code> trên Cloudflare để hiển thị dữ liệu thật.</p>
         </div>
       ) : error ? (
         <div className="empty-card leaderboard-empty"><p>{error}</p></div>
@@ -74,15 +74,15 @@ export default function Leaderboard() {
           </div>
           {rest.length > 0 && (
             <div className="ranking-table-wrap">
-              <div className="ranking-table-head"><span>Hạng</span><span>Thành viên</span><span>Cảnh Giới</span><span>Cấp</span><span>XP</span></div>
+              <div className="ranking-table-head"><span>Hạng</span><span>Thành viên</span><span>Cảnh Giới</span><span>Chiến Lực</span><span>Tổng Tu Vi</span></div>
               <div className="ranking-list">
                 {rest.map((entry, i) => (
                   <article className="ranking-row" key={entry.userId || i}>
                     <strong className="rank-number">#{entry.rank || i + 4}</strong>
                     <div className="rank-user"><Avatar entry={entry}/><div><b>{entry.displayName}</b>{entry.messages > 0 && <small>{fmt.format(entry.messages)} tin nhắn</small>}</div></div>
                     <span className="rank-realm">{entry.realm || "—"}</span>
-                    <span className="rank-level">Cấp {entry.level}</span>
-                    <span className="rank-xp">{fmt.format(entry.totalXp)} XP</span>
+                    <span className="rank-level">⚔️ {fmt.format(entry.power)}</span>
+                    <span className="rank-xp">✨ {fmt.format(entry.totalCultivation)}</span>
                   </article>
                 ))}
               </div>
