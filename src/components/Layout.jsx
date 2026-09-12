@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import {
   BookOpenText, Bot, Command, House, Menu, MessageCircleMore,
-  Newspaper, Send, ShieldCheck, X
+  Newspaper, Send, ShieldCheck, Trophy, X
 } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { avatarFromUser } from "../lib/utils";
@@ -12,6 +12,7 @@ const nav = [
   ["/gioi-thieu", "Giới thiệu", BookOpenText],
   ["/lenh", "Lệnh", Command],
   ["/tin-tuc", "Tin tức", Newspaper],
+  ["/thien-bang", "Thiên Bảng", Trophy],
   ["/dien-dan", "Diễn đàn", MessageCircleMore],
   ["/lien-he", "Liên hệ", Send]
 ];
@@ -22,9 +23,12 @@ export default function Layout({ children }) {
 
   return (
     <div className="site-shell">
+      <div className="announcement-bar">
+        <span className="announcement-dot"/> Corgi Immortal • Official Community Website
+      </div>
       <header className="topbar">
         <Link className="brand" to="/" onClick={() => setOpen(false)}>
-          <span className="brand-mark"><Bot size={24}/></span>
+          <span className="brand-mark"><Bot size={23}/></span>
           <span><strong>Corgi Immortal</strong><small>Official Community</small></span>
         </Link>
 
@@ -69,8 +73,8 @@ export default function Layout({ children }) {
         <div className="footer-links">
           <Link to="/gioi-thieu">Giới thiệu</Link>
           <Link to="/lien-he">Hỗ trợ</Link>
-          <Link to="/privacy">Privacy</Link>
-          <Link to="/terms">Terms</Link>
+          <Link to="/privacy">Chính sách bảo mật</Link>
+          <Link to="/terms">Điều khoản dịch vụ</Link>
         </div>
         <small>© {new Date().getFullYear()} Corgi Immortal. All rights reserved.</small>
       </footer>
