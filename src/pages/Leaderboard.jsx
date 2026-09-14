@@ -30,10 +30,10 @@ export default function Leaderboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const load = async () => {
+  const load = async (fresh = false) => {
     setLoading(true); setError("");
     try {
-      const result = await fetchLeaderboard(100);
+      const result = await fetchLeaderboard(100, fresh);
       setEntries(result.entries);
       setConfigured(result.configured);
     } catch (e) {
@@ -51,8 +51,8 @@ export default function Leaderboard() {
       <div className="leaderboard-hero">
         <span className="eyebrow"><Sparkles size={16}/> THIÊN BẢNG DISCORD</span>
         <h1>Thiên Bảng</h1>
-        <p>Thiên Bảng chính thức của Corgi Immortal, xếp hạng đúng theo Tổng Tu Vi như lệnh /leaderboard trong Discord.</p>
-        <button className="ghost-btn rank-refresh" onClick={load} disabled={loading}><RefreshCw size={16}/>{loading ? "Đang cập nhật" : "Cập nhật"}</button>
+        <p>Thiên Bảng chính thức của Corgi Immortal, ưu tiên Cảnh Giới cao hơn, sau đó đến tầng, Tu Vi và Chiến Lực — đồng bộ với /leaderboard trong Discord.</p>
+        <button className="ghost-btn rank-refresh" onClick={() => load(true)} disabled={loading}><RefreshCw size={16}/>{loading ? "Đang cập nhật" : "Cập nhật"}</button>
       </div>
 
       {!configured ? (

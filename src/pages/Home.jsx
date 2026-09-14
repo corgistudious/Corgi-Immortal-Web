@@ -78,7 +78,7 @@ export default function Home() {
           <Link className="feature-card" to="/lenh"><BookOpen/><h3>Tra cứu lệnh</h3><p>Tìm kiếm nhanh cú pháp, quyền và ví dụ sử dụng.</p><span className="card-more">Mở kho lệnh <ArrowRight size={14}/></span></Link>
           <Link className="feature-card" to="/tin-tuc"><Newspaper/><h3>Tin tức</h3><p>Bài viết, changelog và thông báo với reaction & bình luận.</p><span className="card-more">Đọc bản tin <ArrowRight size={14}/></span></Link>
           <Link className="feature-card" to="/dien-dan"><MessageCircle/><h3>Diễn đàn</h3><p>Đăng chủ đề, trả lời và cùng xây dựng cộng đồng.</p><span className="card-more">Tham gia thảo luận <ArrowRight size={14}/></span></Link>
-          <Link className="feature-card feature-rank" to="/thien-bang"><Trophy/><h3>Thiên Bảng</h3><p>Xem bảng xếp hạng cấp độ và XP của thành viên Discord.</p><span className="card-more">Xem xếp hạng <ArrowRight size={14}/></span></Link>
+          <Link className="feature-card feature-rank" to="/thien-bang"><Trophy/><h3>Thiên Bảng</h3><p>Xem Thiên Bảng theo Cảnh Giới, Tu Vi và Chiến Lực của người chơi.</p><span className="card-more">Xem xếp hạng <ArrowRight size={14}/></span></Link>
         </div>
       </section>
 
