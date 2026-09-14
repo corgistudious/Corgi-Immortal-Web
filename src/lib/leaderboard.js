@@ -1,10 +1,17 @@
 const endpoint = import.meta.env.VITE_LEADERBOARD_API_URL;
 
-export async function fetchLeaderboard(limit = 50) {
+export async function fetchLeaderboard(limit = 50, fresh = false) {
   if (!endpoint) return { entries: [], configured: false };
   const url = new URL(endpoint, window.location.origin);
   url.searchParams.set("limit", String(Math.min(50, limit)));
-  const res = await fetch(url.toString(), { headers: { Accept: "application/json" } });
+  if (fresh) {
+    url.searchParams.set("fresh", "1");
+    url.searchParams.set("_ts", String(Date.now()));
+  }
+  const res = await fetch(url.toString(), {
+    headers: { Accept: "application/json" },
+    cache: fresh ? "no-store" : "default"
+  });
   if (!res.ok) throw new Error(`Leaderboard API ${res.status}`);
   const payload = await res.json();
   const raw = Array.isArray(payload) ? payload : (payload.entries || []);
