@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import {
   BookOpenText, Command, House, Menu, MessageCircleMore,
-  Newspaper, Send, ShieldCheck, Trophy, X
+  Newspaper, Send, ShieldCheck, ShoppingBag, Trophy, X
 } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { avatarFromUser } from "../lib/utils";
@@ -14,6 +14,7 @@ const nav = [
   ["/lenh", "Lệnh", Command],
   ["/tin-tuc", "Tin tức", Newspaper],
   ["/thien-bang", "Thiên Bảng", Trophy],
+  ["/store", "Cửa Hàng", ShoppingBag],
   ["/dien-dan", "Diễn đàn", MessageCircleMore],
   ["/lien-he", "Liên hệ", Send]
 ];
