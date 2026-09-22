@@ -14,6 +14,7 @@ import Admin from "./pages/Admin";
 import Legal from "./pages/Legal";
 import Leaderboard from "./pages/Leaderboard";
 import Store from "./pages/Store";
+import GameHub from "./pages/GameHub";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="/gioi-thieu" element={<About/>}/>
           <Route path="/lenh" element={<Commands/>}/>
+          <Route path="/tien-phu" element={<GameHub/>}/>
           <Route path="/tin-tuc" element={<News/>}/>
           <Route path="/thien-bang" element={<Leaderboard/>}/>
           <Route path="/store" element={<Store/>}/>
