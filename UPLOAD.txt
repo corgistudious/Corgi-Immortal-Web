@@ -1,8 +1,8 @@
-Corgi Immortal Web Game Hub API client
-Upload/overwrite:
-- src/lib/gameApi.js (NEW)
+Corgi Immortal V12.5 Full Web Portal — WEB
+Upload/overwrite exactly:
 - src/pages/GameHub.jsx
+- src/lib/gameApi.js
 - src/styles.css
 
-.env.example is reference only; do NOT overwrite production env just for this patch.
-The client reuses VITE_LEADERBOARD_API_URL by default, so no new Cloudflare variable is required when Game API and leaderboard share the same public host.
+Cloudflare Pages should auto-deploy after GitHub update.
+Existing /thien-bang leaderboard is preserved unchanged.
