@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import {
-  BookOpenText, Command, House, Menu, MessageCircleMore,
+  BookOpenText, Command, House, Menu, MessageCircleMore, Gamepad2,
   Newspaper, Send, ShieldCheck, ShoppingBag, Trophy, X
 } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
@@ -11,6 +11,7 @@ import corgiImmortalLogo from "../assets/corgi-immortal-logo.png";
 const nav = [
   ["/", "Trang Chủ", House],
   ["/gioi-thieu", "Giới thiệu", BookOpenText],
+  ["/tien-phu", "Tiên Phủ", Gamepad2],
   ["/lenh", "Lệnh", Command],
   ["/tin-tuc", "Tin tức", Newspaper],
   ["/thien-bang", "Thiên Bảng", Trophy],
