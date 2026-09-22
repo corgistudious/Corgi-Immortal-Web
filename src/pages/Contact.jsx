@@ -9,6 +9,7 @@ export default function Contact(){
   const [form,setForm]=useState({type:"Góp ý",subject:"",message:""});
   const [tickets,setTickets]=useState([]);
   const [sent,setSent]=useState(false);
+  const [errorMsg,setErrorMsg]=useState("");
 
   async function load(){
     if(!supabase||!user)return;
@@ -20,8 +21,10 @@ export default function Contact(){
   async function submit(e){
     e.preventDefault(); if(!user)return signInDiscord();
     if(!form.subject.trim()||!form.message.trim())return;
+    setSent(false);setErrorMsg("");
     const {error}=await supabase.from("contact_tickets").insert({...form,user_id:user.id});
-    if(!error){setForm({type:"Góp ý",subject:"",message:""});setSent(true);load();}
+    if(error){setErrorMsg(`Gửi thất bại: ${error.message}`);return;}
+    setForm({type:"Góp ý",subject:"",message:""});setSent(true);await load();
   }
 
   return <section className="page section">
@@ -32,7 +35,7 @@ export default function Contact(){
         <input placeholder="Tiêu đề" value={form.subject} onChange={e=>setForm({...form,subject:e.target.value})}/>
         <textarea placeholder="Mô tả chi tiết…" value={form.message} onChange={e=>setForm({...form,message:e.target.value})}/>
         <button className="primary-btn"><Send size={16}/> {user?"Gửi phản hồi":"Đăng nhập Discord để gửi"}</button>
-        {sent&&<p className="success">✓ Đã gửi. Bạn có thể theo dõi trạng thái ở bên cạnh.</p>}
+        {sent&&<p className="action-feedback ok">✓ Đã gửi thành công. Bạn có thể theo dõi trạng thái ở bên cạnh.</p>}{errorMsg&&<p className="action-feedback error">{errorMsg}</p>}
       </form>
 
       <aside className="panel tickets">

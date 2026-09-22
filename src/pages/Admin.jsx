@@ -9,6 +9,7 @@ export default function Admin(){
   const [articles,setArticles]=useState([]);
   const [commands,setCommands]=useState([]);
   const [tickets,setTickets]=useState([]);
+  const [feedback,setFeedback]=useState(null);
   const [article,setArticle]=useState({title:"",excerpt:"",content:"",cover_url:"",published:true});
   const [cmd,setCmd]=useState({category:"Hệ thống",name:"",description:"",usage:"",example:"",permissions:"Mọi thành viên",active:true,sort_order:100});
 
@@ -26,19 +27,24 @@ export default function Admin(){
     e.preventDefault(); if(!article.title||!article.content)return;
     let slug=slugify(article.title);
     const exists=articles.some(a=>a.slug===slug); if(exists)slug+=`-${Date.now().toString().slice(-5)}`;
-    await supabase.from("articles").insert({...article,slug,author_id:user.id});
-    setArticle({title:"",excerpt:"",content:"",cover_url:"",published:true});load();
+    setFeedback({type:"ok",text:"Đang đăng bài…"});
+    const {error}=await supabase.from("articles").insert({...article,slug,author_id:user.id});
+    if(error)return setFeedback({type:"error",text:`Đăng bài thất bại: ${error.message}`});
+    setArticle({title:"",excerpt:"",content:"",cover_url:"",published:true}); await load(); setFeedback({type:"ok",text:"✓ Bài viết đã được đăng thành công."});
   }
   async function addCommand(e){
     e.preventDefault(); if(!cmd.name||!cmd.description)return;
-    await supabase.from("bot_commands").insert(cmd);
-    setCmd({category:"Hệ thống",name:"",description:"",usage:"",example:"",permissions:"Mọi thành viên",active:true,sort_order:100});load();
+    setFeedback({type:"ok",text:"Đang thêm lệnh…"}); const {error}=await supabase.from("bot_commands").insert(cmd);
+    if(error)return setFeedback({type:"error",text:`Thêm lệnh thất bại: ${error.message}`});
+    setCmd({category:"Hệ thống",name:"",description:"",usage:"",example:"",permissions:"Mọi thành viên",active:true,sort_order:100}); await load(); setFeedback({type:"ok",text:"✓ Đã thêm lệnh."});
   }
   async function del(table,id){if(confirm("Xóa mục này?")){await supabase.from(table).delete().eq("id",id);load();}}
   async function ticketStatus(id,status){await supabase.from("contact_tickets").update({status}).eq("id",id);load();}
 
   return <section className="page section admin-page">
     <div className="page-hero compact"><span className="eyebrow">CONTROL PANEL</span><h1>Quản trị Corgi Immortal</h1><p>Quản lý nội dung website từ một nơi.</p></div>
+
+    {feedback&&<div className={`action-feedback ${feedback.type}`}>{feedback.text}</div>}
 
     <div className="admin-grid">
       <section className="panel">
