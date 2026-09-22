@@ -1,0 +1,8 @@
+Corgi Immortal Web Game Hub API client
+Upload/overwrite:
+- src/lib/gameApi.js (NEW)
+- src/pages/GameHub.jsx
+- src/styles.css
+
+.env.example is reference only; do NOT overwrite production env just for this patch.
+The client reuses VITE_LEADERBOARD_API_URL by default, so no new Cloudflare variable is required when Game API and leaderboard share the same public host.
